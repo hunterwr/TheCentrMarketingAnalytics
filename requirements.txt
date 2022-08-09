@@ -1,0 +1,4 @@
+streamlit
+plotnine
+pymongo
+pandas

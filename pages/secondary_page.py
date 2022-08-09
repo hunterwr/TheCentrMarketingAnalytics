@@ -9,4 +9,6 @@ def get_data():
 df = get_data()
 
 
+# Show a table of the entire dataset.
+st.write("## Our dataset:")
 st.write(df)

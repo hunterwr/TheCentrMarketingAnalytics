@@ -14,8 +14,11 @@ df = get_data()
 st.write("## Our dataset:")
 st.write(df)
 
+def init_connection():
+    return pymongo.MongoClient(**st.secrets["mongo"])
 
-cluster = MongoClient('mongodb://theCentrLakeAdmin:protector.of.the.lake.rq3254325.theCentr.com@198.199.92.144:49173/?authMechanism=DEFAULT')
+cluster = init_connection()
+
 db = cluster['datalake']
 
 collection = db['facebook-ad-datas']

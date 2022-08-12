@@ -56,6 +56,6 @@ st.pyplot(ggplot.draw(gph))
 
 start_time = st.slider(
      "When do you start?",
-     value=datetime(2020, 1, 1, 9, 30),
+     value=min,
      format="MM/DD/YY - hh:mm")
 st.write("Start time:", start_time)

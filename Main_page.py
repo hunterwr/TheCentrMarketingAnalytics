@@ -42,9 +42,9 @@ final_df = temp_df
 gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')) + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1))
 
 st.markdown("## Ad Spend Summary")
-
-max = temp_df['Day'].max()
-min = temp_df['Day'].min()
+temp_df['Datetime'] = pd.to_datetime(temp_df['Day'])
+max = temp_df['Datetime'].max()
+min = temp_df['Datetime'].min()
 
 values = st.slider("Select the date range", min_value=None, max_value=None, value=(min, max), step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
 

@@ -38,4 +38,4 @@ final_df = temp_df
 
 gph = (ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')))
 
-(gph + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1)))
+st.write((gph + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1))))

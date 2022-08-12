@@ -33,7 +33,8 @@ for result in results:
     temp_df = pd.concat([temp_df, df], ignore_index=True)
 temp_df.columns=temp_df.columns.str.replace('data.','')
 temp_df['AmountSpent'] = pd.to_numeric(temp_df['Amount Spent'])
-final_df = temp_df.convert_dtypes(infer_objects=True)
+
+final_df = temp_df
 
 gph = (ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')))
 

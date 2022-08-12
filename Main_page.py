@@ -36,6 +36,6 @@ temp_df['AmountSpent'] = pd.to_numeric(temp_df['Amount Spent'])
 
 final_df = temp_df
 
-gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name') + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1)))
+gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')) + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1))
 
 st.pyplot(ggplot.draw(gph))

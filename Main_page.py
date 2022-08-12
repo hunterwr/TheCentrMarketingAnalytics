@@ -56,6 +56,23 @@ st.pyplot(ggplot.draw(gph))
 
 start_time = st.slider(
      "When do you start?",
-     value=min,
+     value=datetime(2020, 1, 1, 9, 30),
      format="MM/DD/YY - hh:mm")
 st.write("Start time:", start_time)
+
+
+
+## Range selector
+#cols1,_ = st.beta_columns((1,2)) # To make it narrower
+format = 'MMM DD, YYYY'  # format output
+start_date = min
+end_date = max
+max_days = end_date-start_date
+
+slider = st.slider('Select date', min_value=start_date, value=end_date ,max_value=end_date, format=format)
+## Sanity check
+st.table(pd.DataFrame([[start_date, slider, end_date]],
+                columns=['start',
+                        'selected',
+                        'end'],
+                index=['date']))

@@ -64,7 +64,7 @@ max_days = end_date-start_date
 slider = st.slider('Select date', min_value=start_date, value=(start_date, end_date) ,max_value=end_date, format=format)
 
 #greater than the start date and smaller than the end date
-mask = (temp_df['Datetime'] > pd.to_datetime(slider[0])) & (temp_df['Datetime'] <=  pd.to_datetime(slider[1]))
+mask = (temp_df['Datetime'] >= pd.to_datetime(slider[0])) & (temp_df['Datetime'] <=  pd.to_datetime(slider[1]))
 
 final_df = temp_df.loc[mask]
 
@@ -77,6 +77,6 @@ st.pyplot(ggplot.draw(gph))
 #Sum total ad spend
 total = final_df['AmountSpent'].sum()
 sub_totals = final_df.groupby('Ad Name')['AmountSpent'].sum()
-st.markdown(f'### Total Ad Spend {slider[0]} to {slider[1]}')
-st.write(total)
+st.markdown(f'##{slider[0]} to {slider[1]}')
+st.markdown(f'#### Total Ad Spend: {total}')
 st.write(sub_totals)

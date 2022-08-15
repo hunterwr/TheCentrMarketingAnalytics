@@ -83,3 +83,5 @@ st.table(pd.DataFrame([[start_date, slider, end_date]],
 st.write(min_year)
 st.write(min_month)
 st.write(min_day)
+
+st.write(slider)

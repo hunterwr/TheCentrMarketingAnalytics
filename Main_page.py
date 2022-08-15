@@ -71,24 +71,12 @@ final_df = temp_df.loc[mask]
 gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')) + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1))
 
 
-
-
-#values = st.slider("Select the date range", min_value=None, max_value=None, value=(min, max), step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
-
 st.pyplot(ggplot.draw(gph))
 
-st.write(slider[0])
 
-
-
-
-
-
-
-
-
-st.write(min_year)
-st.write(min_month)
-st.write(min_day)
-
-st.write(slider)
+#Sum total ad spend
+total = final_df['AmountSpent'].sum()
+sub_totals = final_df.groupby('Ad Name')['AmountSpent'].sum()
+st.markdown(f'### Total Ad Spend {slider[0]} to {slider[1]}')
+st.write(total)
+st.write(sub_totals)

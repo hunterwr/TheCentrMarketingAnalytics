@@ -71,7 +71,7 @@ start_date = dt.date(year=min_year,month=min_month,day=min_day)  #  I need some 
 end_date = dt.date(year=max_year,month=max_month,day=max_day)
 max_days = end_date-start_date
 
-slider = st.slider('Select date', min_value=start_date, value=end_date ,max_value=end_date, format=format)
+slider = st.slider('Select date', min_value=start_date, value=(start_date, end_date) ,max_value=end_date, format=format)
 ## Sanity check
 st.table(pd.DataFrame([[start_date, slider, end_date]],
                 columns=['start',

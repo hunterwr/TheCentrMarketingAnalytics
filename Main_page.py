@@ -36,8 +36,9 @@ def get_fb_data(db):
     temp_df['AmountSpent'] = pd.to_numeric(temp_df['Amount Spent'])
     return temp_df
 
-temp_df = get_fb_data(db)
-#newdf = df[(df.origin >= "JFK") & (df.carrier == "B6")]
+placeholder = get_fb_data(db)
+
+temp_df = placeholder
 
 st.markdown("## Ad Spend Summary")
 

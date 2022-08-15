@@ -14,7 +14,7 @@ df = get_data()
 # Show a table of the entire dataset.
 #st.write("## Our dataset:")
 #st.write(df)
-@st.cache(hash_funcs={MongoClient: id})
+
 def init_connection():
     return pymongo.MongoClient(**st.secrets["mongo"])
 
@@ -25,7 +25,7 @@ db = cluster['datalake']
 collection = db['facebook-ad-datas']
 results = collection.find({})
 
-#@st.cache
+@st.cache(allow_output_mutation=True)
 def get_fb_data(results):
     
     temp_df = pd.DataFrame()

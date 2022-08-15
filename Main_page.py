@@ -60,7 +60,9 @@ max_days = end_date-start_date
 slider = st.slider('Select date', min_value=start_date, value=(start_date, end_date) ,max_value=end_date, format=format)
 
 #greater than the start date and smaller than the end date
-final_df = temp_df.loc[(temp_df['Datetime'] >= start_date) & (temp_df['Datetime'] <= end_date)]
+mask = (temp_df['Datetime'] > pd.to_datetime(start_date)) & (temp_df['Datetime'] <=  pd.to_datetime(end_date))
+
+final_df = temp_df.loc[mask]
 
 gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')) + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1))
 

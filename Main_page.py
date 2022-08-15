@@ -3,8 +3,7 @@ import pandas as pd
 from plotnine import *
 import pymongo
 from pymongo import MongoClient
-from datetime import datetime
-from datetime import time
+import datetime as dt
 
 @st.cache
 def get_data():
@@ -76,9 +75,7 @@ st.pyplot(ggplot.draw(gph))
 
 
 
-import streamlit as st
-import datetime as dt
-import pandas as pd
+
 
 
 

@@ -58,16 +58,6 @@ st.pyplot(ggplot.draw(gph))
 
 
 
-start_time = st.slider(
-     "When do you start?",
-     value=datetime(2020, 1, 1, 9, 30),
-     format="MM/DD/YY - hh:mm")
-st.write("Start time:", start_time)
-
-
-
-
-
 import streamlit as st
 import datetime as dt
 import pandas as pd
@@ -75,13 +65,13 @@ import pandas as pd
 
 
 ## Range selector
-cols1,_ = st.beta_columns((1,2)) # To make it narrower
+
 format = 'MMM DD, YYYY'  # format output
-start_date = dt.date(year=2021,month=1,day=1)  #  I need some range in the past
-end_date = dt.datetime.now().date()
+start_date = dt.date(year=min_year,month=min_month,day=min_day)  #  I need some range in the past
+end_date = dt.date(year=max_year,month=max_month,day=max_day)
 max_days = end_date-start_date
 
-slider = cols1.slider('Select date', min_value=start_date, value=end_date ,max_value=end_date, format=format)
+slider = st.slider('Select date', min_value=start_date, value=end_date ,max_value=end_date, format=format)
 ## Sanity check
 st.table(pd.DataFrame([[start_date, slider, end_date]],
                 columns=['start',

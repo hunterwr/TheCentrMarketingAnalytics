@@ -22,10 +22,12 @@ cluster = init_connection()
 
 db = cluster['datalake']
 
+collection = db['facebook-ad-datas']
+results = collection.find({})
+
 @st.cache
-def get_fb_data(db):
-    collection = db['facebook-ad-datas']
-    results = collection.find({})
+def get_fb_data(results):
+    
     temp_df = pd.DataFrame()
 
     for result in results:

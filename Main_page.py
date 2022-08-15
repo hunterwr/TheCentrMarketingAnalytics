@@ -73,7 +73,7 @@ gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name
 
 st.pyplot(ggplot.draw(gph))
 
-st.write(slider)
+st.write(slider[0])
 
 
 

@@ -64,8 +64,6 @@ mask = (temp_df['Datetime'] >= pd.to_datetime(start_date)) & (temp_df['Datetime'
 
 final_df = temp_df.loc[mask]
 
-st.write(final_df.dtypes)
-
 gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name')) + geom_bar(stat='identity') + theme_classic() + theme(axis_text_x=element_text(rotation=90, hjust=1))
 
 

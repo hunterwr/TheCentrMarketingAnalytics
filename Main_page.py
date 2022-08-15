@@ -14,7 +14,7 @@ df = get_data()
 # Show a table of the entire dataset.
 #st.write("## Our dataset:")
 #st.write(df)
-
+@st.cache
 def init_connection():
     return pymongo.MongoClient(**st.secrets["mongo"])
 
@@ -22,20 +22,21 @@ cluster = init_connection()
 
 db = cluster['datalake']
 
-collection = db['facebook-ad-datas']
+@st.cache
+def get_fb_data(db):
+    collection = db['facebook-ad-datas']
+    results = collection.find({})
+    temp_df = pd.DataFrame()
 
-results = collection.find({})
+    for result in results:
+        ad_data = result    #['data'] #['data'] #['data']
+        df = pd.json_normalize(ad_data)
+        temp_df = pd.concat([temp_df, df], ignore_index=True)
+    temp_df.columns=temp_df.columns.str.replace('data.','')
+    temp_df['AmountSpent'] = pd.to_numeric(temp_df['Amount Spent'])
+    return temp_df
 
-temp_df = pd.DataFrame()
-
-for result in results:
-    ad_data = result    #['data'] #['data'] #['data']
-    df = pd.json_normalize(ad_data)
-    temp_df = pd.concat([temp_df, df], ignore_index=True)
-temp_df.columns=temp_df.columns.str.replace('data.','')
-temp_df['AmountSpent'] = pd.to_numeric(temp_df['Amount Spent'])
-
-
+temp_df = get_fb_data(db)
 #newdf = df[(df.origin >= "JFK") & (df.carrier == "B6")]
 
 st.markdown("## Ad Spend Summary")

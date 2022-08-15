@@ -45,8 +45,12 @@ gph = ggplot(data=final_df, mapping=aes(x='Day', y ='AmountSpent', fill='Ad Name
 
 st.markdown("## Ad Spend Summary")
 temp_df['Datetime'] = pd.to_datetime(temp_df['Day'])
-max = temp_df['Datetime'].max()
-min = temp_df['Datetime'].min()
+max_year = temp_df['Datetime'].max().year
+max_month = temp_df['Datetime'].max().month
+max_day = temp_df['Datetime'].max().day
+min_year = temp_df['Datetime'].min().year
+min_month = temp_df['Datetime'].min().month
+min_day = temp_df['Datetime'].min().day
 
 #values = st.slider("Select the date range", min_value=None, max_value=None, value=(min, max), step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
 
@@ -62,17 +66,30 @@ st.write("Start time:", start_time)
 
 
 
+
+
+import streamlit as st
+import datetime as dt
+import pandas as pd
+
+
+
 ## Range selector
-#cols1,_ = st.beta_columns((1,2)) # To make it narrower
+cols1,_ = st.beta_columns((1,2)) # To make it narrower
 format = 'MMM DD, YYYY'  # format output
-start_date = min
-end_date = max
+start_date = dt.date(year=2021,month=1,day=1)  #  I need some range in the past
+end_date = dt.datetime.now().date()
 max_days = end_date-start_date
 
-slider = st.slider('Select date', min_value=start_date, value=end_date ,max_value=end_date, format=format)
+slider = cols1.slider('Select date', min_value=start_date, value=end_date ,max_value=end_date, format=format)
 ## Sanity check
 st.table(pd.DataFrame([[start_date, slider, end_date]],
                 columns=['start',
                         'selected',
                         'end'],
                 index=['date']))
+
+
+st.write(min_year)
+st.write(min_month)
+st.write(min_day)

@@ -14,7 +14,7 @@ df = get_data()
 # Show a table of the entire dataset.
 #st.write("## Our dataset:")
 #st.write(df)
-@st.cache
+
 def init_connection():
     return pymongo.MongoClient(**st.secrets["mongo"])
 

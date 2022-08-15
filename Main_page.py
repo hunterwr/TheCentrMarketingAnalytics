@@ -38,7 +38,7 @@ def get_fb_data(results):
     temp_df['AmountSpent'] = pd.to_numeric(temp_df['Amount Spent'])
     return temp_df
 
-placeholder = get_fb_data(db)
+placeholder = get_fb_data(results)
 
 temp_df = placeholder
 

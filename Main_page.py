@@ -77,6 +77,10 @@ st.pyplot(ggplot.draw(gph))
 #Sum total ad spend
 total = final_df['AmountSpent'].sum()
 sub_totals = final_df.groupby('Ad Name')['AmountSpent'].sum()
+sub_totals2 = final_df.groupby('Ad Name')['AmountSpent'].sum()
+sub_totals3 = final_df.groupby('Ad Name')['AmountSpent'].sum()
 st.markdown(f'## {slider[0]} to {slider[1]}')
 st.markdown(f'#### Total Ad Spend: $ {total}')
 st.write(sub_totals)
+
+st.write(final_df)
